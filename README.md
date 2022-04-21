@@ -6,7 +6,7 @@
 [![Support badge](https://img.shields.io/badge/tag-fiware-orange.svg?logo=stackoverflow)](https://stackoverflow.com/questions/tagged/fiware)
 <br/> [![Documentation](https://img.shields.io/readthedocs/fiware-tutorials.svg)](https://fiware-tutorials.rtfd.io)
 
-This is an Introductory Tutorial to the FIWARE Platform. We will start with the data from a supermarket chain’s store
+This is an introductory tutorial to the FIWARE Platform. We will start with the data from a supermarket chain store
 finder and create a very simple _“Powered by FIWARE”_ application by passing in the address and location of each store
 as context data to the FIWARE context broker.
 
@@ -60,7 +60,7 @@ persistence of the context data it holds. Therefore, the architecture will consi
 
 -   The [Orion Context Broker](https://fiware-orion.readthedocs.io/en/latest/) which will receive requests using
     [NGSI-v2](https://fiware.github.io/specifications/OpenAPI/ngsiv2)
--   The underlying [MongoDB](https://www.mongodb.com/) database :
+-   The underlying [MongoDB](https://www.mongodb.com/) database:
     -   Used by the Orion Context Broker to hold context data information such as data entities, subscriptions and
         registrations
 
@@ -73,20 +73,20 @@ run from exposed ports.
 
 ## Docker
 
-To keep things simple both components will be run using [Docker](https://www.docker.com). **Docker** is a container
-technology which allows to different components isolated into their respective environments.
+To keep things simple, both components will be run using [Docker](https://www.docker.com). **Docker** is a container
+technology which allows different components to be deployed into their respective isolated environments.
 
--   To install Docker on Windows follow the instructions [here](https://docs.docker.com/docker-for-windows/)
--   To install Docker on Mac follow the instructions [here](https://docs.docker.com/docker-for-mac/)
--   To install Docker on Linux follow the instructions [here](https://docs.docker.com/install/)
+-   To install Docker on Windows, follow the instructions [here](https://docs.docker.com/docker-for-windows/)
+-   To install Docker on Mac, follow the instructions [here](https://docs.docker.com/docker-for-mac/)
+-   To install Docker on Linux, follow the instructions [here](https://docs.docker.com/install/)
 
 ## Docker Compose (Optional)
 
 **Docker Compose** is a tool for defining and running multi-container Docker applications. A
 [YAML file](https://raw.githubusercontent.com/Fiware/tutorials.Getting-Started/master/docker-compose.yml) is used
-configure the required services for the application. This means all container services can be brought up in a single
+to configure the required services for the application. This means all container services can be brought up in a single
 command. Docker Compose is installed by default as part of Docker for Windows and Docker for Mac, however Linux users
-will need to follow the instructions found [here](https://docs.docker.com/compose/install/)
+will need to follow the instructions found [here](https://docs.docker.com/compose/install/).
 
 You can check your current **Docker** and **Docker Compose** versions using the following commands:
 
@@ -138,7 +138,7 @@ docker run -d --name fiware-orion -h orion --network=fiware_default \
 ## Option 2) Using Docker Compose
 
 All services can be initialised from the command-line using the `docker-compose` command or the newer
-`docker compose` command (without the hyphen `-` )found in [Compose V2](https://docs.docker.com/compose/cli-command/).
+`docker compose` command (without the hyphen `-`) found in [Compose V2](https://docs.docker.com/compose/cli-command/).
 Please clone the repository and create the necessary images by running the commands as shown:
 
 ```console
@@ -202,7 +202,7 @@ The response will look similar to the following:
 >
 > If you get a `Connection refused` response, the Orion Content Broker cannot be found where expected for this
 > tutorial - you will need to substitute the URL and port in each cUrl command with the corrected IP address. All the
-> cUrl commands tutorial assume that orion is available on `localhost:1026`.
+> cUrl commands in this tutorial assume that orion is available on `localhost:1026`.
 >
 > Try the following remedies:
 >
@@ -234,9 +234,9 @@ The response will look similar to the following:
 ## Creating Context Data
 
 At its heart, FIWARE is a system for managing context information, so lets add some context data into the system by
-creating two new entities (stores in **Berlin**). Any entity must have a `id` and `type` attributes, additional
-attributes are optional and will depend on the system being described. Each additional attribute should also have a
-defined `type` and a `value` attribute.
+creating two new entities (stores in **Berlin**). Any entity must have the attributes `id` and `type` - additional
+attributes are optional and will depend on the system being described. Each additional attribute should also have 
+defined `type` and `value` attributes.
 
 #### :two: Request:
 
