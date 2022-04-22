@@ -71,6 +71,10 @@ run from exposed ports.
 
 # Prerequisites
 
+## Operating System
+
+This tutorial is written for Linux environments, so the commands would need to be heavily adapted if using Windows. 
+
 ## Docker
 
 To keep things simple, both components will be run using [Docker](https://www.docker.com). **Docker** is a container
@@ -320,8 +324,8 @@ curl -iX POST \
 
 ### Data Model Guidelines
 
-Although the each data entity within your context will vary according to your use case, the common structure within each
-data entity should be standardized order to promote reuse. The full Smart Data model guidelines can be found
+Although each data entity within your context will vary according to your use case, the common structure within each
+data entity should be standardized to promote reuse. The full Smart Data model guidelines can be found
 [here](https://smartdatamodels.org/). This tutorial demonstrates the usage of the following recommendations:
 
 #### All terms are defined in American English
@@ -331,18 +335,18 @@ English language.
 
 #### Entity type names must start with a Capital letter
 
-In this case we only have one entity type - **Store**
+In this case we only have one entity type - **Store**.
 
 #### Entity IDs should be a URN following NGSI-LD guidelines
 
 NGSI-LD has recently been published as a full ETSI
-[specification](https://www.etsi.org/deliver/etsi_gs/CIM/001_099/009/01.04.02_60/gs_cim009v010402p.pdf), the proposal is
-that each `id` is a URN follows a standard format: `urn:ngsi-ld:<entity-type>:<entity-id>`. This will mean that every
-`id` in the system will be unique
+[specification](https://www.etsi.org/deliver/etsi_gs/CIM/001_099/009/01.04.02_60/gs_cim009v010402p.pdf). The proposal is
+that each `id` is a URN and follows a standard format: `urn:ngsi-ld:<entity-type>:<entity-id>`. This will mean that every
+`id` in the system will be unique.
 
 #### Data type names should reuse schema.org data types where possible
 
-[Schema.org](http://schema.org/) is an initiative to create common structured data schemas. In order to promote reuse we
+[Schema.org](http://schema.org/) is an initiative to create common structured data schemas. In order to promote reuse, we
 have deliberately used the [`Text`](http://schema.org/PostalAddress) and
 [`PostalAddress`](http://schema.org/PostalAddress) type names within our **Store** entity. Other existing standards such
 as [Open311](http://www.open311.org/) (for civic issue tracking) or [Datex II](https://datex2.eu/) (for transport
@@ -352,11 +356,11 @@ reuse it.
 #### Use camel case syntax for attribute names
 
 The `streetAddress`, `addressRegion`, `addressLocality` and `postalCode` are all examples of attributes using camel
-casing
+casing.
 
 #### Location information should be defined using `address` and `location` attributes
 
--   We have used an `address` attribute for civic locations as per [schema.org](http://schema.org/)
+-   We have used an `address` attribute for civic locations as per [schema.org](http://schema.org/).
 -   We have used a `location` attribute for geographical coordinates.
 
 #### Use GeoJSON for codifying geospatial properties
@@ -371,10 +375,10 @@ accuracy, provider, or a timestamp. Several built-in metadata attribute already 
 
 -   `dateCreated` (type: DateTime): attribute creation date as an ISO 8601 string.
 -   `dateModified` (type: DateTime): attribute modification date as an ISO 8601 string.
--   `previousValue` (type: any): only in notifications. The value of this
--   `actionType` (type: Text): only in notifications.
+-   `previousValue` (type: any): only in notifications. The value of this metadata is the previous value (to the request triggering the notification) of the associated attribute. The type of this metadata must be the previous type of the associated attribute. If the type/value of `previousValue` is the same type/value as in the associated attribute, then the attribute has not actually changed its value.
+-   `actionType` (type: Text): only in notifications. It is included if the attribute to which it is attached was included in the request that triggered the notification. Its value depends on the request operation type: `update` for updates, `append` for creation and `delete` for deletion. Its type is always `Text`.
 
-One element of metadata can be found within the `address` attribute. a `verified` flag indicates whether the address has
+One element of metadata can be found within the `address` attribute: a `verified` flag indicates whether the address has
 been confirmed.
 
 ## Querying Context Data
